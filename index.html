@@ -54,12 +54,12 @@
                 <li
                   class="rounded hover:bg-primary text-black hover:text-white"
                 >
-                  <a>Link 1</a>
+                  <a>Default</a>
                 </li>
                 <li
                   class="rounded hover:bg-primary text-black hover:text-white"
                 >
-                  <a>Link 2</a>
+                  <a>White</a>
                 </li>
               </ul>
             </details>
@@ -70,10 +70,10 @@
 
     <div class="flex h-screen">
       <div class="w-1/4 border-x-2">
-        <ul class="p-5 ">
-          <li>Funny cat meme</li>
-          <li>Relatable meme</li>
-          <li>Dark meme meme</li>
+        <ul class="pl-8">
+          <li class="py-1 ">Funny cat meme</li>
+          <li class="py-1 ">Relatable meme</li>
+          <li class="py-1 ">Dark meme meme</li>
         
         </ul>
       </div>
@@ -101,8 +101,12 @@
                   ✕
                 </button>
               </form>
-              <h3 class="text-lg font-bold">Hello!</h3>
-              <p class="py-4">Press ESC key or click on ✕ button to close</p>
+              <h3 class="text-lg font-bold">Set Your API Key</h3>
+              <p class="py-4 text-sm">Press set your own API key below (that needs to be set only once in your Browser). Find your own key here: <a class="text-primary underline underline-offset-1" href="https://humorapi.com/console/#profile">https://humorapi.com/console/#profile</a></p>
+              <div class="form-control gap-4">
+                <input type="text" placeholder="Search" class="input input-bordered rounded-full w-24 md:w-auto" />
+                <button class="btn rounded-full ">Save API Key in Browser</button>
+              </div>
             </div>
           </dialog>
         </div>
