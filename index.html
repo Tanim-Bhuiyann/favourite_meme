@@ -9,7 +9,7 @@
   <body>
     <div class="navbar bg-base-100">
       <div class="flex-1">
-        <a class=" font-bold ml-8 mr-8">Femes|Favourite Memes</a>
+        <a class="font-bold ml-8 mr-8">Femes|Favourite Memes</a>
         <div class="ml-16">
           <div class="form-control relative hidden lg:flex">
             <input
@@ -45,14 +45,19 @@
         </div>
       </div>
       <div class="flex-none">
-        <ul class="menu menu-horizontal px-1 ">
-          
-          <li class="bg-slate-100 rounded-full hover:bg-primary hover:text-white">
+        <ul class="menu menu-horizontal px-1">
+          <li
+            class="bg-slate-100 rounded-full hover:bg-primary hover:text-white"
+          >
             <details>
               <summary>Theme</summary>
               <ul class="bg-slate-100">
-                <li  class="rounded hover:bg-primary hover:text-white"><a>Link 1</a></li>
-                <li  class=" rounded hover:bg-primary hover:text-white"><a>Link 2</a></li>
+                <li class="rounded hover:bg-primary hover:text-white">
+                  <a>Link 1</a>
+                </li>
+                <li class="rounded hover:bg-primary hover:text-white">
+                  <a>Link 2</a>
+                </li>
               </ul>
             </details>
           </li>
@@ -63,22 +68,40 @@
     <hr />
 
     <div class="flex">
-      <div class="flex-none w-80 ">
-       <ul>
-        <li>Funny cat meme</li>
-        <li>Relatable meme</li>
-        <li>Dark meme meme</li>
-       </ul>
+      <div class="flex-none w-80">
+        <ul class="p-5">
+          <li>Funny cat meme</li>
+          <li>Relatable meme</li>
+          <li>Dark meme meme</li>
+        </ul>
       </div>
-  
-      <div class="flex-1 w-full ">
-        <div  class="w-full md:max-w-5xl mx-auto flex items-center  justify-center pt- ">
-          <button class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg">Responsive</button>
+
+      <div class="flex-1 w-full">
+        <div
+          class="w-full md:max-w-5xl mx-auto flex items-center justify-center pt-32"
+        >
+          <!-- You can open the modal using ID.showModal() method -->
+           <div class="grid justify-items-center gap-4">
+           <A >You need an API Key to get the memes feed.</A>
+          <button class="btn rounded-full px-10 " onclick="my_modal_3.showModal()">
+            Set API Key
+          </button></div>
+          <dialog id="my_modal_3" class="modal">
+            <div class="modal-box">
+              <form method="dialog">
+                <button
+                  class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 "
+                >
+                  ✕
+                </button>
+              </form>
+              <h3 class="text-lg font-bold">Hello!</h3>
+              <p class="py-4">Press ESC key or click on ✕ button to close</p>
+            </div>
+          </dialog>
         </div>
-       
       </div>
     </div>
-    
 
     <script type="module" src="/main.js"></script>
   </body>
