@@ -9,10 +9,10 @@
 
   <body>
     <nav class="flex h-16 items-center m-x-18">
-      <div class="h-full w-1/4 flex items-center border-2">
+      <div class="h-full w-1/5 flex items-center border-2">
         <a class="font-bold text-center w-full">Femes|Favourite Memes</a>
       </div>
-      <div class="h-full w-3/4 flex items-center border-b-2  justify-between ">
+      <div class="h-full w-4/5 flex items-center border-b-2  justify-between ">
         <div class="form-control relative hidden lg:flex pl-4">
           <input
             type="text"
@@ -69,7 +69,7 @@
     </nav>
 
     <div class="flex h-screen">
-      <div class="w-1/4 border-x-2">
+      <div class="w-1/5 border-x-2">
         <ul class="pl-8">
           <li class="py-1 ">Funny cat meme</li>
           <li class="py-1 ">Relatable meme</li>
@@ -78,10 +78,9 @@
         </ul>
       </div>
 
-      <div class="w-3/4 h-full">
+      <div class="w-4/5 h-full" id="memesContainer">
         <div
-          class="w-full md:max-w-5xl mx-auto flex items-center justify-center pt-32"
-        >
+          class="w-full md:max-w-5xl mx-auto flex items-center justify-center pt-32" id="homePage" >
           <!-- You can open the modal using ID.showModal() method -->
           <div class="grid justify-items-center gap-4">
             <a>You need an API Key to get the memes feed.</a>
@@ -104,12 +103,13 @@
               <h3 class="text-lg font-bold">Set Your API Key</h3>
               <p class="py-4 text-sm">Press set your own API key below (that needs to be set only once in your Browser). Find your own key here: <a class="text-primary underline underline-offset-1" href="https://humorapi.com/console/#profile">https://humorapi.com/console/#profile</a></p>
               <div class="form-control gap-4">
-                <input type="text" placeholder="Search" class="input input-bordered rounded-full w-24 md:w-auto" />
-                <button class="btn rounded-full ">Save API Key in Browser</button>
+                <input type="text" placeholder="Search" id="userId" class="input input-bordered rounded-full w-24 md:w-auto" />
+                <button class="btn rounded-full" id="setapiBtn" onclick="">Save API Key in Browser</button>
               </div>
             </div>
           </dialog>
         </div>
+        
       </div>
     </div>
 
