@@ -1,4 +1,5 @@
 import "./style.css";
+
 const setAPI = document.getElementById("setapiBtn");
 const memesContainer = document.querySelector(".memesContainer");
 const apiError = document.getElementById("apiError");
@@ -6,9 +7,85 @@ const apiError = document.getElementById("apiError");
 let baseUrl;
 let userId;
 
+function hasUrlKey(key) {
+  const urlParams = new URLSearchParams(window.location.search);
+ 
+  console.log(key);
+  return urlParams.has(key);
+
+}
+
+if (hasUrlKey("demo")) {
+  
+  let url = "/mock/search/search.json";
+  
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      document.getElementById("homePage").style.display = "none";
+      getMemes(data.memes);
+    })
+    .catch((error) => {
+      console.error("Error fetching demo data:", error);
+    });
+} else {
+  console.log("The key 'demo' is not present in the URL.");
+}
+
+async function getMemes(memes) {
+  memesContainer.innerHTML = "";
+
+  if (!memes || memes.length === 0) {
+    memesContainer.innerHTML = "<p>No memes found.</p>";
+    return;
+  }
+
+  memes.forEach((meme) => {
+    if (meme.type === "image/jpeg") {
+      memesContainer.innerHTML += `
+        <div class="flex justify-center items-center rounded-lg  shadow-xl overflow-hidden transition-all duration-300 hover:shadow-3xl focus:shadow-2xl relative group">
+          <img
+            src="${meme.url}"
+            alt="Meme ${meme.id}"
+            class="object-cover w-full h-full transform transition-transform duration-300 hover:scale-105 focus:scale-105"
+          />
+          <div class="absolute top-2 right-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <button>
+              <svg
+                fill="#3c3c3c"
+                height="40px"
+                width="40px"
+                version="1.1"
+                id="Capa_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 0 471.701 471.701"
+                xml:space="preserve"
+              >
+                <g>
+                  <path
+                    d="M433.601,67.001c-24.7-24.7-57.4-38.2-92.3-38.2s-67.7,13.6-92.4,38.3l-12.9,12.9l-13.1-13.1
+                    c-24.7-24.7-57.6-38.4-92.5-38.4c-34.8,0-67.6,13.6-92.2,38.2c-24.7,24.7-38.3,57.5-38.2,92.4c0,34.9,13.7,67.6,38.4,92.3
+                    l187.8,187.8c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-3.9l188.2-187.5c24.7-24.7,38.3-57.5,38.3-92.4
+                    C471.801,124.501,458.301,91.701,433.601,67.001z M414.401,232.701l-178.7,178l-178.3-178.3c-19.6-19.6-30.4-45.6-30.4-73.3
+                    s10.7-53.7,30.3-73.2c19.5-19.5,45.5-30.3,73.1-30.3c27.7,0,53.8,10.8,73.4,30.4l22.6,22.6c5.3,5.3,13.8,5.3,19.1,0l22.4-22.4
+                    c19.6-19.6,45.7-30.4,73.3-30.4c27.6,0,53.6,10.8,73.2,30.3c19.6,19.6,30.3,45.6,30.3,73.3
+                    C444.801,187.101,434.001,213.101,414.401,232.701z"
+                  />
+                </g>
+              </svg>
+            </button>
+          </div>
+        </div>
+      `;
+    }
+  });
+}
 
 
-setAPI.addEventListener("click", async () => {
+
+setAPI.addEventListener("click", async (event) => {
+  event.preventDefault();
   userId = document.getElementById("userId").value;
 
   if (userId) {
@@ -17,7 +94,6 @@ setAPI.addEventListener("click", async () => {
       const response = await fetch(baseUrl);
       if (!response.ok) {
         throw new Error("You are not authorized. Please read https://humorapi.com/docs/#Authentication");
-       
       }
       const data = await response.json();
       console.log(data);
@@ -32,104 +108,3 @@ setAPI.addEventListener("click", async () => {
     console.log("API key not provided");
   }
 });
-
-function getMemes(memes) {
-  memesContainer.innerHTML = ""; 
-    memes.forEach((meme) => {
-      const memeDiv = document.createElement('div');
-      memeDiv.classList.add("meme");
-
-      const img = document.createElement('img');
-      img.src = meme.url;
-      img.alt = `Meme ${meme.id}`;
-      img.classList.add("w-full", "h-auto");
-
-      memeDiv.appendChild(img);
-      memesContainer.appendChild(memeDiv); 
-     /*  if(meme.type === "image/jpeg"){
-      memesContainer.innerHTML += ` <div class="flex justify-center items-center rounded-lg w-80 h-full shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl focus:shadow-2xl relative group">
-              <img
-                 src="${meme.url}"
-                alt="Meme ${meme.id}
-                class="object-cover w-full h-full transform transition-transform duration-300 hover:scale-105 focus:scale-105"
-              />
-              <div class="absolute top-2 right-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <a href="#">
-                  <svg
-                    fill="#3c3c3c"
-                    height="40px"
-                    width="40px"
-                    version="1.1"
-                    id="Capa_1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                    viewBox="0 0 471.701 471.701"
-                    xml:space="preserve"
-                  >
-                    <g>
-                      <path
-                        d="M433.601,67.001c-24.7-24.7-57.4-38.2-92.3-38.2s-67.7,13.6-92.4,38.3l-12.9,12.9l-13.1-13.1
-                         c-24.7-24.7-57.6-38.4-92.5-38.4c-34.8,0-67.6,13.6-92.2,38.2c-24.7,24.7-38.3,57.5-38.2,92.4c0,34.9,13.7,67.6,38.4,92.3
-                         l187.8,187.8c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-3.9l188.2-187.5c24.7-24.7,38.3-57.5,38.3-92.4
-                         C471.801,124.501,458.301,91.701,433.601,67.001z M414.401,232.701l-178.7,178l-178.3-178.3c-19.6-19.6-30.4-45.6-30.4-73.3
-                         s10.7-53.7,30.3-73.2c19.5-19.5,45.5-30.3,73.1-30.3c27.7,0,53.8,10.8,73.4,30.4l22.6,22.6c5.3,5.3,13.8,5.3,19.1,0l22.4-22.4
-                         c19.6-19.6,45.7-30.4,73.3-30.4c27.6,0,53.6,10.8,73.2,30.3c19.6,19.6,30.3,45.6,30.3,73.3
-                         C444.801,187.101,434.001,213.101,414.401,232.701z"
-                      />
-                    </g>
-                  </svg>
-                </a>
-              </div>
-            </div>`; 
-      } */
-
-    });
-  }
-
-  /*   function getMemes(memes) {
-      memesContainer.innerHTML = ""; 
-      memes.forEach((meme) => {
-        if (meme.type === "image/jpeg") {
-          const memeDiv = document.createElement("div");
-          memeDiv.classList.add("flex", "justify-center", "items-center", "rounded-lg", "w-80", "h-96", "shadow-xl", "overflow-hidden", "transition-all", "duration-300", "hover:shadow-2xl", "focus:shadow-2xl", "relative", "group");
-    
-          const img = document.createElement("img");
-          img.src = meme.url;
-          img.alt = `Meme ${meme.id}`;
-          img.classList.add("object-cover", "w-full", "h-full", "transform", "transition-transform", "duration-300", "hover:scale-105", "focus:scale-105");
-    
-          const overlayDiv = document.createElement("div");
-          overlayDiv.classList.add("absolute", "top-2", "right-2", "opacity-0", "transition-opacity", "duration-300", "group-hover:opacity-100");
-    
-          const link = document.createElement("a");
-          link.href = "#";
-    
-          const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-          svg.setAttribute("fill", "#3c3c3c");
-          svg.setAttribute("height", "40px");
-          svg.setAttribute("width", "40px");
-          svg.setAttribute("version", "1.1");
-          svg.setAttribute("id", "Capa_1");
-          svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-          svg.setAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink");
-          svg.setAttribute("viewBox", "0 0 471.701 471.701");
-          svg.setAttribute("xml:space", "preserve");
-    
-          const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-          path.setAttribute("d", `M433.601,67.001c-24.7-24.7-57.4-38.2-92.3-38.2s-67.7,13.6-92.4,38.3l-12.9,12.9l-13.1-13.1
-            c-24.7-24.7-57.6-38.4-92.5-38.4c-34.8,0-67.6,13.6-92.2,38.2c-24.7,24.7-38.3,57.5-38.2,92.4c0,34.9,13.7,67.6,38.4,92.3
-            l187.8,187.8c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-3.9l188.2-187.5c24.7-24.7,38.3-57.5,38.3-92.4
-            C471.801,124.501,458.301,91.701,433.601,67.001z M414.401,232.701l-178.7,178l-178.3-178.3c-19.6-19.6-30.4-45.6-30.4-73.3
-            s10.7-53.7,30.3-73.2c19.5-19.5,45.5-30.3,73.1-30.3c27.7,0,53.8,10.8,73.4,30.4l22.6,22.6c5.3,5.3,13.8,5.3,19.1,0l22.4-22.4
-            c19.6-19.6,45.7-30.4,73.3-30.4c27.6,0,53.6,10.8,73.2,30.3c19.6,19.6,30.3,45.6,30.3,73.3
-            C444.801,187.101,434.001,213.101,414.401,232.701z`);
-    
-          svg.appendChild(path);
-          link.appendChild(svg);
-          overlayDiv.appendChild(link);
-          memeDiv.appendChild(img);
-          memeDiv.appendChild(overlayDiv);
-          memesContainer.appendChild(memeDiv);
-        }
-      });
-    } */
