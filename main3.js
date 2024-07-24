@@ -273,6 +273,14 @@ function saveMemes() {
 }
 
 
+document.querySelectorAll('[data-set-theme]').forEach(button => {
+  button.addEventListener('click', () => {
+    const theme = button.getAttribute('data-set-theme');
+    document.documentElement.setAttribute('data-theme', theme);
+  });
+});
+
+
 getmemeData();
 saveMemes();
 

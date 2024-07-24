@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
@@ -8,7 +8,7 @@
   </head>
 
   <body>
-    <nav class="flex h-16 items-center m-x-18 fixed w-full bg-slate-100 z-10">
+    <nav class="flex h-16 items-center m-x-18 fixed w-full z-10">
       <div class="h-full md:w-1/5 hidden md:flex items-center border-2">
         <a class="font-bold text-center w-full">Femes|Favourite Memes</a>
       </div>
@@ -47,50 +47,132 @@
             </svg>
           </div>
         </div>
-        <ul class="menu menu-horizontal px-1">
-          <li
-            class="rounded-full bg-slate-100 hover:bg-primary hover:text-white"
-          >
-            <details>
-              <summary>Theme</summary>
-              <ul class="bg-slate-300 z-10">
-                <li
-                  class="rounded hover:bg-primary text-black hover:text-white"
-                >
-                  <a>Default</a>
-                </li>
-                <li
-                  class="rounded hover:bg-primary text-black hover:text-white"
-                >
-                  <a>White</a>
-                </li>
-              </ul>
-            </details>
-          </li>
-        </ul>
-        <div class="flex flex-col gap-1 hover:gap-0">
-          <span
-            class="border w-5 border-black hover:rotate-45 hover:absolute"
-          ></span>
-          <span class="border w-5 border-black hover:hidden"></span>
-          <span
-            class="border w-5 border-black hover:-rotate-45 hover:absolute"
-          ></span>
+        <div class="flex justify-end">
+          <ul class="menu menu-horizontal pr-10 ">
+            <li
+              class="rounded-full bg-slate-100 hover:bg-primary hover:text-white"
+            >
+              <details>
+                <summary>Theme</summary>
+                <ul class="bg-slate-300 z-10">
+                  <li>
+                    <button class="rounded hover:bg-primary text-black hover:text-white" data-set-theme="light">
+                      light
+                    </button>
+                  </li>
+                  <li>
+                    <button class="rounded hover:bg-primary text-black hover:text-white" data-set-theme="dark">
+                      dark
+                    </button>
+                  </li>
+                  <li>
+                    <button class="rounded hover:bg-primary text-black hover:text-white" data-set-theme="cupcake">
+                      cupcake
+                    </button>
+                  </li>
+                  <li>
+                    <button class="rounded hover:bg-primary text-black hover:text-white" data-set-theme="bumblebee">
+                      bumblebee
+                    </button>
+                  </li>
+                  <li>
+                    <button class="rounded hover:bg-primary text-black hover:text-white" data-set-theme="emerald">
+                      emerald
+                    </button>
+                  </li>
+                  <li>
+                    <button class="rounded hover:bg-primary text-black hover:text-white" data-set-theme="corporate">
+                      corporate
+                    </button>
+                  </li>
+                  <li>
+                    <button class="rounded hover:bg-primary text-black hover:text-white" data-set-theme="synthwave">
+                      synthwave
+                    </button>
+                  </li>
+                  <li>
+                    <button class="rounded hover:bg-primary text-black hover:text-white" data-set-theme="retro">
+                      retro
+                    </button>
+                  </li>
+                  <li>
+                    <button class="rounded hover:bg-primary text-black hover:text-white" data-set-theme="cyberpunk">
+                      cyberpunk
+                    </button>
+                  </li>
+                  <li>
+                    <button class="rounded hover:bg-primary text-black hover:text-white" data-set-theme="valentine">
+                      valentine
+                    </button>
+                  </li>
+                  <li>
+                    <button class="rounded hover:bg-primary text-black hover:text-white" data-set-theme="halloween">
+                      halloween
+                    </button>
+                  </li>
+                  <li>
+                    <button class="rounded hover:bg-primary text-black hover:text-white" data-set-theme="garden">
+                      garden
+                    </button>
+                  </li>
+                </ul>
+              </details>
+            </li>
+          </ul>
+        </div>
+        <div class="drawer drawer-end md:hidden items-center justify-end">
+          <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
+          <div class="drawer-content">
+            <label for="my-drawer-4" class="">
+              <div class="flex flex-col gap-1">
+                <span class="border w-5 border-black"></span>
+                <span class="border w-5 border-black"></span>
+                <span class="border w-5 border-black"></span>
+              </div>
+            </label>
+          </div>
+          <div class="drawer-side">
+            <label
+              for="my-drawer-4"
+              aria-label="close sidebar"
+              class="drawer-overlay"
+            ></label>
+            <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+              <!-- Sidebar content here -->
+              <li><a>Sidebar Item 1</a></li>
+              <li><a>Sidebar Item 2</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
 
     <div class="pt-16 flex h-screen">
-      <div class="md:w-1/5 hidden md:block  border-x-2">
+      <div class="md:w-1/5 hidden md:block border-x-2">
         <div class="overflow-x-auto">
           <table class="table" id="table">
-            
+<!--             <tr>
+              <td>
+                <div class="flex items-center gap-3">
+                  <div class="avatar">
+                    <div class="mask mask-squircle h-12 w-12">
+                      <img
+                        src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png"
+                        alt="Avatar Tailwind CSS Component"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <div class="font-bold">Hart Hagerty</div>
+                  </div>
+                </div>
+              </td>
+            </tr> -->
           </table>
         </div>
       </div>
 
-      <div class="pt-4 md:w-4/5 w-full  overflow-y-auto">
-        
+      <div class="pt-4 md:w-4/5 w-full overflow-y-auto">
         <div
           class="w-full md:max-w-5xl mx-auto flex items-center justify-center pt-32"
           id="homePage"
@@ -138,11 +220,9 @@
             </div>
           </dialog>
         </div>
-        <div id="meme-title">
-
-        </div>
+        <div id="meme-title"></div>
         <div
-          class="memesContainer p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  xl:grid-cols-4 gap-6"
+          class="memesContainer p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6"
           id="memesContainer"
         >
           <!-- <div
