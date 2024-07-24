@@ -311,4 +311,131 @@ fetchMemes(); */
 
 
 
-               
+               <div class="overflow-x-auto">
+  <table class="table">
+   
+    <tbody>
+ 
+      <tr>
+       
+
+        <td>
+          <div class="flex items-center gap-3">
+            <div class="avatar">
+              <div class="mask mask-squircle h-12 w-12">
+                <img
+                  src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png"
+                  alt="Avatar Tailwind CSS Component" />
+              </div>
+            </div>
+            <div>
+              <div class="font-bold">Hart Hagerty</div>
+             
+            </div>
+          </div>
+        </td>
+
+      
+
+      </tr>
+   
+    
+   
+    </tbody>
+   
+   
+  </table>
+</div>
+
+
+
+
+
+
+
+
+
+/* document.addEventListener("DOMContentLoaded", () => {
+  // Retrieve the API key from local storage when the page loads
+  const savedApiKey = localStorage.getItem("apiKey");
+  if (savedApiKey) {
+    document.getElementById("userId").value = savedApiKey;
+  }
+});
+
+setAPI.addEventListener("click", async (event) => {
+  event.preventDefault(); // Prevent default form submission
+
+  userId = document.getElementById("userId").value;
+  if (userId) {
+    // Save the API key in local storage
+    localStorage.setItem("apiKey", userId);
+
+    baseUrl = `https://api.humorapi.com/memes/search?number=30&keywords=rocket&api-key=${userId}`;
+    const homePage = document.getElementById("homePage");
+    homePage.className = "hidden";
+    try {
+      const response = await fetch(baseUrl);
+      if (!response.ok) {
+        throw new Error("You are not authorized. Please read https://humorapi.com/docs/#Authentication");
+      }
+      const data = await response.json();
+      console.log(data);
+      
+      getMemes(data.memes);
+      
+    } catch (error) {
+      console.error("Fetch error:", error);
+      apiError.innerText = error.message;
+    }
+  } else {
+    alert("Please enter an API key");
+    console.log("API key not provided");
+  }
+}); */
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Retrieve the API key from local storage when the page loads
+  const savedApiKey = localStorage.getItem("apiKey");
+  if (savedApiKey) {
+    document.getElementById("userId").value = savedApiKey;
+  }
+});
+
+document.getElementById("apiForm").addEventListener("submit", async (event) => {
+  event.preventDefault(); // Prevent default form submission
+
+  const userId = document.getElementById("userId").value;
+  const homePage = document.getElementById("homePage");
+  const apiError = document.getElementById("apiError");
+
+  if (userId) {
+    // Save the API key in local storage
+    localStorage.setItem("apiKey", userId);
+
+    const baseUrl = `https://api.humorapi.com/memes/search?number=30&keywords=rocket&api-key=${userId}`;
+    homePage.classList.add("hidden");
+    
+    try {
+      const response = await fetch(baseUrl);
+      if (!response.ok) {
+        throw new Error("You are not authorized. Please read https://humorapi.com/docs/#Authentication");
+      }
+      const data = await response.json();
+      console.log(data);
+      
+      getMemes(data.memes);
+      
+    } catch (error) {
+      console.error("Fetch error:", error);
+      apiError.innerText = error.message;
+    }
+  } else {
+    alert("Please enter an API key");
+    console.log("API key not provided");
+  }
+});
+
+
+

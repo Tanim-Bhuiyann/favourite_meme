@@ -1,22 +1,19 @@
 import "./style.css";
 
-
+const setAPI = document.getElementById("setapiBtn");
+const memesContainer = document.querySelector(".memesContainer");
 //const apiError = document.getElementById("apiError");
-
-
 
 function hasUrlKey(key) {
   const urlParams = new URLSearchParams(window.location.search);
- 
+
   console.log(key);
   return urlParams.has(key);
-
 }
 
 if (hasUrlKey("demo")) {
-  
   let url = "/mock/search/search.json";
-  
+
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
@@ -29,9 +26,6 @@ if (hasUrlKey("demo")) {
 } else {
   console.log("The key 'demo' is not present in the URL.");
 }
-
-
-
 
 //----------1
 /* setAPI.addEventListener("click", async (event) => {
@@ -65,7 +59,6 @@ if (hasUrlKey("demo")) {
   }
 }); */
 
-
 //-----------2
 
 /* setAPI.addEventListener("click", async (event) => {
@@ -96,20 +89,20 @@ if (hasUrlKey("demo")) {
 }); */
 
 //-----------3
- let baseUrl;
+let baseUrl;
 let userId;
 const homePage = document.getElementById("homePage");
-const apiError = document.getElementById("apiError"); 
-const setAPI = document.getElementById("setapiBtn");
-const memesContainer = document.querySelector(".memesContainer");
+const apiError = document.getElementById("apiError");
 
-const fetchMemes = async (baseUrl) => {
-   //baseUrl = `https://api.humorapi.com/memes/search?number=30&api-key=${userId}`;
-   //localStorage.setItem("apiKey", JSON.stringify(userId));
+const fetchMemes = async (userId) => {
+  baseUrl = `https://api.humorapi.com/memes/search?number=30&api-key=${userId}`;
+  //localStorage.setItem("apiKey", JSON.stringify(userId));
   try {
     const response = await fetch(baseUrl);
     if (!response.ok) {
-      throw new Error("You are not authorized. Please read https://humorapi.com/docs/#Authentication");
+      throw new Error(
+        "You are not authorized. Please read https://humorapi.com/docs/#Authentication"
+      );
     }
     const data = await response.json();
     console.log(data);
@@ -123,12 +116,10 @@ const fetchMemes = async (baseUrl) => {
 };
 
 setAPI.addEventListener("click", async (event) => {
-   userId = document.getElementById("userId").value;
-   console.log(userId);
+  userId = document.getElementById("userId").value;
+
   if (userId) {
-    baseUrl = `https://api.humorapi.com/memes/search?number=30&api-key=${userId}`;
-    console.log(baseUrl);
-    await fetchMemes(baseUrl);
+    await fetchMemes(userId);
   } else {
     alert("Please enter an API key");
     console.log("API key not provided");
@@ -137,33 +128,8 @@ setAPI.addEventListener("click", async (event) => {
 
 const getAPI = JSON.parse(localStorage.getItem("apiKey"));
 if (getAPI) {
-  baseUrl = `https://api.humorapi.com/memes/search?number=30&api-key=${getAPI}`;
- 
-  fetchMemes(baseUrl);
-  console.log(getAPI);
-  localStorage.setItem("apiKey", JSON.stringify(getAPI));
+  fetchMemes(getAPI);
 }
-
-const searchMemes = document.getElementById("searchMemes");
-searchMemes.addEventListener('keydown', function(event){
-  if(event.key === "Enter"){
-    const searchValue = event.target.value;
-    console.log(searchValue);
-    if (!getAPI) {
-       console.log("error");
-      // my_modal_3.showModal(); 
-     }else{
-       const getAPI = JSON.parse(localStorage.getItem("apiKey"));
-      const url = `https://api.humorapi.com/memes/search?api-key=${getAPI}&keywords=${searchValue}&number=30`;
-       fetchMemes(url);
-     }
-  }
-});
-
-
-
-
-
 
 async function getMemes(memes) {
   memesContainer.innerHTML = "";
@@ -172,18 +138,13 @@ async function getMemes(memes) {
     memesContainer.innerHTML = "<p>No memes found.</p>";
     return;
   }
-
-  const memeTitle= document.getElementById("meme-title");
-  memeTitle.innerHTML=`<h1 class="text-3xl p-4">Memes</h1>`
-
-  // const memeTitle = document.createElement("div");
-  // memeTitle.innerHTML = ;
-  // memesContainer.appendChild(memeTitle);
+  
 
   memes.forEach((meme) => {
     if (meme.type === "image/jpeg") {
       const memeDiv = document.createElement("div");
-      memeDiv.className = "flex justify-center items-center rounded-lg shadow-xl overflow-hidden transition-all duration-300 hover:shadow-3xl focus:shadow-2xl relative group";
+      memeDiv.className =
+        "flex justify-center items-center rounded-lg shadow-xl  transition-all duration-300 hover:shadow-3xl focus:shadow-2xl relative group";
       console.log(meme.url);
       memeDiv.innerHTML = `
         <img
@@ -219,25 +180,25 @@ async function getMemes(memes) {
           </button>
         </div>
       `;
-      
+      memesContainer.classList.add("hidden");
+
       memesContainer.appendChild(memeDiv);
     }
   });
 
-  document.querySelectorAll(".addbtn").forEach(button => {
+  document.querySelectorAll(".addbtn").forEach((button) => {
     button.addEventListener("click", () => {
-      let val = prompt("Save meme as");
+      let val = prompt("Save memes as");
       memelistArray.push({
         id: button.dataset.id,
         description: val,
-        url: button.dataset.url
+        url: button.dataset.url,
       });
       savememData();
       saveMemes();
     });
   });
 }
-
 
 let memelistArray = [];
 
@@ -251,7 +212,6 @@ function getmemeData() {
     memelistArray = storedMemes;
   }
 }
-
 
 function saveMemes() {
   const memelist = document.getElementById("table");
@@ -277,9 +237,5 @@ function saveMemes() {
   });
 }
 
-
 getmemeData();
 saveMemes();
-
-
-

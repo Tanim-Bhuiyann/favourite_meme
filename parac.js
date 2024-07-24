@@ -80,4 +80,21 @@ function getMemes(memes) {
     });
   }
 
+
+
+        const searchMemes = document.getElementById("searchMemes");
+      searchMemes.addEventListener('keydown', function(event){
+        if(event.key === "Enter"){
+          const searchValue = event.target.value;
+          console.log(searchValue);
+          if (!getAPI) {
+             console.log("error");
+            // my_modal_3.showModal(); 
+           }else{
+             const getAPI = JSON.parse(localStorage.getItem("apiKey"));
+             url = `https://api.humorapi.com/memes/search?api-key=${getAPI}&keywords=${searchValue}&number=30`;
+             fetchMemes(url);
+           }
+        }
+      });
   

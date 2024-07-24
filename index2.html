@@ -5,19 +5,18 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
+    
   </head>
 
   <body>
-    <nav class="flex h-16 items-center m-x-18 fixed w-full bg-slate-100 z-10">
-      <div class="h-full md:w-1/5 hidden md:flex items-center border-2">
+    <nav class="flex h-16 items-center m-x-18">
+      <div class="h-full w-1/5 flex items-center border-2">
         <a class="font-bold text-center w-full">Femes|Favourite Memes</a>
       </div>
-      <div
-        class="h-full md:w-4/5 md:px-0 px-4 w-full flex items-center border-b-2 justify-between"
-      >
+      <div class="h-full w-4/5 flex items-center border-b-2 justify-between">
         <div class="form-control relative hidden lg:flex pl-4">
           <input
-            id="searchMemes"
+          id="searchMemes"
             type="text"
             placeholder="Search memes..."
             class="border-0 rounded-lg w-[507px] bg-blue-50 h-12 px-10 relative"
@@ -49,11 +48,11 @@
         </div>
         <ul class="menu menu-horizontal px-1">
           <li
-            class="rounded-full bg-slate-100 hover:bg-primary hover:text-white"
+            class="rounded-full bg-slate-100  hover:bg-primary hover:text-white"
           >
             <details>
               <summary>Theme</summary>
-              <ul class="bg-slate-300 z-10">
+              <ul class="bg-slate-300">
                 <li
                   class="rounded hover:bg-primary text-black hover:text-white"
                 >
@@ -68,33 +67,26 @@
             </details>
           </li>
         </ul>
-        <div class="flex flex-col gap-1 hover:gap-0">
-          <span
-            class="border w-5 border-black hover:rotate-45 hover:absolute"
-          ></span>
-          <span class="border w-5 border-black hover:hidden"></span>
-          <span
-            class="border w-5 border-black hover:-rotate-45 hover:absolute"
-          ></span>
-        </div>
       </div>
     </nav>
 
-    <div class="pt-16 flex h-screen">
-      <div class="md:w-1/5 hidden md:block  border-x-2">
+    <div class="flex h-full">
+      <div class="w-1/5 border-x-2">
         <div class="overflow-x-auto">
           <table class="table" id="table">
+      
             
           </table>
         </div>
       </div>
 
-      <div class="pt-4 md:w-4/5 w-full  overflow-y-auto">
+
+
+      <div class="w-4/5 h-screen">
         
         <div
           class="w-full md:max-w-5xl mx-auto flex items-center justify-center pt-32"
-          id="homePage"
-        >
+          id="homePage">
           <div class="grid justify-items-center gap-4">
             <a>You need an API Key to get the memes feed.</a>
             <button
@@ -106,7 +98,7 @@
           </div>
           <dialog id="my_modal_3" class="modal">
             <div class="modal-box">
-              <form method="dialog">
+              <form method="dialog" >
                 <button
                   class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
                 >
@@ -138,14 +130,13 @@
             </div>
           </dialog>
         </div>
-        <div id="meme-title">
 
-        </div>
         <div
-          class="memesContainer p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  xl:grid-cols-4 gap-6"
+        class="memesContainer p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6"
           id="memesContainer"
         >
-          <!-- <div
+
+                             <!--    <div
               class="flex justify-center items-center rounded-lg w-80 h-96 shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl focus:shadow-2xl relative group"
             >
               <img
@@ -183,10 +174,14 @@
                 </a>
               </div>
             </div> -->
+
         </div>
       </div>
     </div>
 
-    <script type="module" src="/main3.js"></script>
+    <script type="module" src="/main2.js"></script>
   </body>
 </html>
+
+
+
