@@ -273,13 +273,13 @@ function saveMemes() {
 }
 
 
-// Function to set the theme
+
 function setTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
   localStorage.setItem('theme', theme); 
 }
 
-// Function to load the saved theme on page load
+
 function loadTheme() {
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme) {
@@ -287,7 +287,7 @@ function loadTheme() {
   }
 }
 
-// Event listener for theme buttons
+
 document.querySelectorAll('[data-set-theme]').forEach(button => {
   button.addEventListener('click', () => {
     const theme = button.getAttribute('data-set-theme');
@@ -295,8 +295,8 @@ document.querySelectorAll('[data-set-theme]').forEach(button => {
   });
 });
 
-// Load the saved theme on page load
-//document.addEventListener('DOMContentLoaded', loadTheme);
+
+
 
 
 loadTheme();
