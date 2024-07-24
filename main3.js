@@ -184,7 +184,7 @@ async function getMemes(memes) {
         <img
           src="${meme.url}"
           alt="${meme.description}"
-          class="object-cover w-80 h-96 transform transition-transform duration-300 hover:scale-105 focus:scale-105"
+          class="object-cover w-full h-96 transform transition-transform duration-300 hover:scale-105 focus:scale-105"
         />
         <div class="absolute top-2 right-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           <button class="addbtn" data-id="${meme.id}" data-url="${meme.url}" data-description="${meme.description}">
