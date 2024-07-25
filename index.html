@@ -20,7 +20,7 @@
             id="searchMemes"
             type="text"
             placeholder="Search memes..."
-            class="border-0 rounded-lg w-[507px] bg-blue-50 h-12 px-10 relative"
+            class="border-0 rounded-lg w-[507px] bg-blue-50 h-12 px-10 relative "
           />
           <div class="search absolute pt-4 pl-3">
             <svg
@@ -47,14 +47,38 @@
             </svg>
           </div>
         </div>
+        <div class="drawer drawer-end md:hidden items-center justify-start z-10">
+          <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
+          <div class="drawer-content">
+            <label for="my-drawer-4" class="">
+              <div class="flex flex-col gap-1">
+                <span class="border w-5 border-black"></span>
+                <span class="border w-5 border-black"></span>
+                <span class="border w-5 border-black"></span>
+              </div>
+            </label>
+          </div>
+          <div class="drawer-side">
+            <label
+              for="my-drawer-4"
+              aria-label="close sidebar"
+              class="drawer-overlay"
+            ></label>
+            <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+              <!-- Sidebar content here -->
+              <li><a>Sidebar Item 1</a></li>
+              <li><a>Sidebar Item 2</a></li>
+            </ul>
+          </div>
+        </div>
         <div class="flex justify-end">
-          <ul class="menu menu-horizontal pr-10 ">
+          <ul  class="menu menu-horizontal  dropdown dropdown-bottom dropdown-end">
             <li
-              class="rounded-full bg-slate-100 hover:bg-primary hover:text-white"
+              class="rounded-full bg-slate-100 hover:bg-primary hover:text-white" 
             >
               <details>
                 <summary>Theme</summary>
-                <ul class="bg-slate-100 z-10">
+                <ul tabindex="0" class=" dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
                   <li>
                     <button class="rounded hover:bg-primary text-black hover:text-white" data-set-theme="light">
                       light
@@ -120,30 +144,7 @@
             </li>
           </ul>
         </div>
-        <div class="drawer drawer-end md:hidden items-center justify-end">
-          <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
-          <div class="drawer-content">
-            <label for="my-drawer-4" class="">
-              <div class="flex flex-col gap-1">
-                <span class="border w-5 border-black"></span>
-                <span class="border w-5 border-black"></span>
-                <span class="border w-5 border-black"></span>
-              </div>
-            </label>
-          </div>
-          <div class="drawer-side">
-            <label
-              for="my-drawer-4"
-              aria-label="close sidebar"
-              class="drawer-overlay"
-            ></label>
-            <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-              <!-- Sidebar content here -->
-              <li><a>Sidebar Item 1</a></li>
-              <li><a>Sidebar Item 2</a></li>
-            </ul>
-          </div>
-        </div>
+       
       </div>
     </nav>
 
@@ -180,7 +181,7 @@
           <div class="grid justify-items-center gap-4">
             <a>You need an API Key to get the memes feed.</a>
             <button
-              class="btn rounded-full px-10"
+              class="btn rounded-full px-10 hover:bg-primary"
               onclick="my_modal_3.showModal()"
             >
               Set API Key
@@ -190,7 +191,7 @@
             <div class="modal-box">
               <form method="dialog">
                 <button
-                  class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                  class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 hover:bg-primary"
                 >
                   ✕
                 </button>
@@ -209,10 +210,10 @@
                     type="text"
                     placeholder="Enter API Key"
                     id="userId"
-                    class="input input-bordered rounded-full w-24 md:w-auto"
+                    class="input input-bordered rounded-full "
                   />
                   <p id="apiError" class="text-red-500 text-sm"></p>
-                  <button class="btn rounded-full" id="setapiBtn">
+                  <button class="btn rounded-full hover:bg-primary" id="setapiBtn">
                     Save API Key in Browser
                   </button>
                 </div>

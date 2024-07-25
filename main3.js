@@ -178,7 +178,7 @@ async function getMemes(memes) {
   memes.forEach((meme) => {
     if (meme.type === "image/jpeg" || meme.type === "image/png"){
       const memeDiv = document.createElement("div");
-      memeDiv.className = "flex justify-center items-center rounded-lg shadow-xl overflow-hidden transition-all duration-300 hover:shadow-3xl focus:shadow-2xl relative group";
+      memeDiv.className = "flex justify-center items-center rounded-lg shadow-xl overflow-hidden transition-all duration-300  hover:shadow-3xl focus:shadow-2xl relative group";
       console.log(meme.url);
       memeDiv.innerHTML = `
         <img
@@ -187,7 +187,7 @@ async function getMemes(memes) {
           class="object-cover w-full h-96 transform transition-transform duration-300 hover:scale-105 focus:scale-105"
         />
         <div class="absolute top-2 right-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-          <button class="addbtn" data-id="${meme.id}" data-url="${meme.url}" data-description="${meme.description}">
+          <button class="addbtn " data-id="${meme.id}" data-url="${meme.url}" data-description="${meme.description}">
             <svg
               fill="#FF0000"
               height="40px"
