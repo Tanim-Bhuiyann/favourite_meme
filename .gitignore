@@ -24,5 +24,4 @@ dist-ssr
 *.sw?
 
 # Ignore specific HTML files
-*index2.html
-*prac.html
+FAVOURITE_MEME/index2.html
