@@ -250,10 +250,13 @@ function getmemeData() {
 
 function saveMemes() {
   const memelist = document.getElementById("table");
+  const memeSidelist = document.getElementById("sidebar");
+  memeSidelist.innerHTML ="";
   memelist.innerHTML = "";
 
   memelistArray.forEach((meme) => {
     const tbody = document.createElement("tbody");
+    const ulBody = document.createElement("li");
     tbody.innerHTML = `
     <tr>
       <td>
@@ -268,7 +271,9 @@ function saveMemes() {
       </td>
        </tr>
     `;
+    ulBody.innerHTML =`<a class="">${meme.description}</a>`;
     memelist.appendChild(tbody);
+    memeSidelist.appendChild(ulBody);
   });
 }
 

@@ -64,8 +64,9 @@
               aria-label="close sidebar"
               class="drawer-overlay"
             ></label>
-            <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-              <!-- Sidebar content here -->
+            
+            <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4" id="sidebar">
+             
               <li><a>Sidebar Item 1</a></li>
               <li><a>Sidebar Item 2</a></li>
             </ul>
@@ -281,7 +282,7 @@
           <div class="grid justify-items-center gap-4">
             <a>You need an API Key to get the memes feed.</a>
             <button
-              class="btn rounded-full px-10 hover:bg-primary"
+              class="btn rounded-full px-10 hover:bg-primary text-black hover:text-white"
               onclick="my_modal_3.showModal()"
             >
               Set API Key
@@ -295,7 +296,7 @@
                 >
                   ✕
                 </button>
-                <h3 class="text-lg font-bold">Set Your API Key</h3>
+                <h3 class="text-lg font-bold ">Set Your API Key</h3>
                 <p class="py-4 text-sm">
                   Press set your own API key below (that needs to be set only
                   once in your Browser). Find your own key here:
