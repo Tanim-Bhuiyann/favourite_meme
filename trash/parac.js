@@ -98,3 +98,112 @@ function getMemes(memes) {
         }
       });
   
+
+
+      /* const searchMemes = document.getElementById("searchMemes");
+
+searchMemes.addEventListener('input', async (event) => {
+  const searchValue = event.target.value;
+  console.log(searchValue);
+
+  const getAPI = JSON.parse(localStorage.getItem("apiKey"));
+  
+  if (searchValue.length >= 3 && !getAPI) { 
+    my_modal_3.showModal(); 
+    console.log("API key is not available");
+  } 
+});
+
+searchMemes.addEventListener('keydown', async (event) => {
+  if (event.key === "Enter") {
+    const searchValue = event.target.value;
+    console.log(searchValue);
+    const apiKey = JSON.parse(localStorage.getItem("apiKey"));
+    if (!apiKey) {
+      console.log("API key not available");
+      // my_modal_3.showModal(); 
+    } else {
+      const url = `https://api.humorapi.com/memes/search?api-key=${apiKey}&keywords=${searchValue}&number=30`;
+      await fetchMemes(url);
+    }
+  }
+}); */
+
+
+  // const memeTitle = document.createElement("div");
+  // memeTitle.innerHTML = ;
+  // memesContainer.appendChild(memeTitle);
+
+
+  //const apiError = document.getElementById("apiError");
+
+
+
+
+
+
+
+
+//----------1
+/* setAPI.addEventListener("click", async (event) => {
+  
+  userId = document.getElementById("userId").value;
+  localStorage.setItem("apiKey", userId);
+  //document.getElementById("homePage").style.display = "none";
+  if (userId) {
+   baseUrl = `https://api.humorapi.com/memes/search?number=30&api-key=${userId}`;
+   //document.getElementById("homePage").style.display = "none";
+   
+    try {
+      const response = await fetch(baseUrl);
+      if (!response.ok) {
+        throw new Error("You are not authorized. Please read https://humorapi.com/docs/#Authentication");
+      }
+      const data = await response.json();
+      console.log(data);
+      const homePage =document.getElementById("homePage");
+      homePage.className="hidden";
+      localStorage.setItem("apiKey", JSON.stringify(userId));
+     getMemes(data.memes);
+      
+    } catch (error) {
+      console.error("Fetch error:", error);
+      apiError.innerText = error.message;
+    }
+  } else {
+    alert("Please enter an API key");
+    console.log("API key not provided");
+  }
+}); */
+
+
+//-----------2
+
+/* setAPI.addEventListener("click", async (event) => {
+  const userId = document.getElementById("userId").value;
+  const baseUrl = `https://api.humorapi.com/memes/search?number=30&api-key=${userId}`;
+  const homePage = document.getElementById("homePage");
+  const apiError = document.getElementById("apiError"); // Make sure this element exists in your HTML
+
+  if (userId) {
+    try {
+      const response = await fetch(baseUrl);
+      if (!response.ok) {
+        throw new Error("You are not authorized. Please read https://humorapi.com/docs/#Authentication");
+      }
+      const data = await response.json();
+      console.log(data);
+      homePage.className = "hidden";
+      localStorage.setItem("apiKey", JSON.stringify(userId));
+      getMemes(data.memes);
+    } catch (error) {
+      console.error("Fetch error:", error);
+      apiError.innerText = error.message;
+    }
+  } else {
+    alert("Please enter an API key");
+    console.log("API key not provided");
+  }
+}); */
+
+//-----------3
