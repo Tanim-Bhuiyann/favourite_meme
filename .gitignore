@@ -7,14 +7,20 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-.gitignore
+
 node_modules
 trash
 dist
 dist-ssr
 *.local
 /nwe.html
-
+/index2.html
+/prac.html
+/main.js
+/main2.js
+/main3.js
+/parac.js
+/trash.txt
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
