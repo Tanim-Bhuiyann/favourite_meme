@@ -9,8 +9,8 @@ lerna-debug.log*
 
 .gitignore
 node_modules
-/trash
-/dist
+trash
+dist
 dist-ssr
 *.local
 
