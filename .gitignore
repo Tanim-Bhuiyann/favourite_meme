@@ -7,9 +7,10 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+.gitignore
 node_modules
 /trash
-dist
+/dist
 dist-ssr
 *.local
 
