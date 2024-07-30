@@ -48,7 +48,7 @@ setAPI.addEventListener("click", async () => {
     baseUrl = `https://api.humorapi.com/memes/search?number=30&api-key=${userId}`;
     console.log(baseUrl);
     localStorage.setItem("apiKey", JSON.stringify(userId));
-    await fetchMemes(baseUrl);
+    fetchMemes(baseUrl);
   } else {
     alert("Please enter an API key");
     console.log("API key not provided");
@@ -84,7 +84,7 @@ async function handleSearchEvent(event) {
 
   if (event.type === "keydown" && event.key === "Enter") {
     const url = `https://api.humorapi.com/memes/search?api-key=${apiKey}&keywords=${searchValue}&number=30`;
-    await fetchMemes(url);
+    fetchMemes(url);
   }
 }
 
