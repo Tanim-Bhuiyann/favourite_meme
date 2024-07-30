@@ -35,7 +35,8 @@ function hasUrlKey(key) {
 if (hasUrlKey("demo")) {
   let url = "/mock/search/search.json";
 
-  await fetchMemes(url);
+  fetchMemes(url);
+  localStorage.removeItem("apiKey");
 } else {
   console.log("The key 'demo' is not present in the URL.");
 }
